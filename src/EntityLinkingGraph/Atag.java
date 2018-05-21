@@ -6,7 +6,6 @@
 package EntityLinkingGraph;
 
 /**
- *
  * @author hosseinAghahosseini
  */
 public class Atag {

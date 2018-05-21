@@ -1,6 +1,8 @@
 
 package EntityLinkingGraph;
 
+import java.util.ArrayList;
+
 /**
  * @author hosseinAghahosseini
  */
@@ -8,4 +10,12 @@ package EntityLinkingGraph;
 public class AtagList {
     
     public String link = "";
+    
+    public ArrayList<Atag> allTags = new ArrayList<>();
+    
+    public void initialize (String pageData)
+    {
+
+        
+    }
 }
