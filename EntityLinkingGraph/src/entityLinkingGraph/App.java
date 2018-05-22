@@ -1,9 +1,10 @@
 package entityLinkingGraph;
 
+import java.io.IOException;
+
 public class App {
 
-	public static void main(String[] args) {
-		Preprocessing p = new Preprocessing();
-		p.newDatasetsCreator();
+	public static void main(String[] args) throws IOException {
+
 	}
 }
