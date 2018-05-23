@@ -90,14 +90,6 @@ public class AtagList {
         {
             referencesRemoved = tempR;
         }
-                
-//        referencesIndex = referencesRemoved.indexOf("<div class=\"thumb");
-//        //System.out.print(referencesIndex);
-//        if(referencesIndex >= 0)
-//        {
-//            referencesRemoved = referencesRemoved.substring(0, referencesIndex-1);
-//        }
-//        
         
         doc = Jsoup.parse(referencesRemoved);
         links = doc.select("a[href]");
