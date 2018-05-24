@@ -39,13 +39,17 @@ public class EntityLinkigGraph {
         System.out.println(w.link);
         
         */
-        
-        ArrayList<String> visitedLinks = new ArrayList<>();
+
+        //ArrayList<String> visitedLinks = new ArrayList<>();
         wikiTitle wt = new wikiTitle();
-        wt.initialize("AliDaei");
-        wt.setChildren(false, 1, visitedLinks);
+        wt.initialize("graphtheory");
+        //wt.setChildren(false, 1, visitedLinks);
+        wt.setChildren(false, 2, staticAddedLinks.visitedLinks);
         
         System.out.println(LocalDateTime.now());
+        
+        for (int i = 0 ; i < staticAddedLinks.visitedLinks.size() ; i++)
+            System.out.println(staticAddedLinks.visitedLinks.get(i));
     }
     
 }
