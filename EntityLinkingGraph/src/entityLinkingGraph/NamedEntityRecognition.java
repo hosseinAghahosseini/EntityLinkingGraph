@@ -7,7 +7,7 @@ public class NamedEntityRecognition {
 
 	private String titleArticle = "data\\new_dataset\\titleArticleSmall.json";
 	private Map<String, Integer> titleArticleMap;
-	private Map<String, Integer> documentVector;
+	private Map<String, Integer> neMap;
 	private String document;
 
 	public NamedEntityRecognition(String document) {
@@ -18,21 +18,21 @@ public class NamedEntityRecognition {
 	}
 
 	private void titleArticleToMap() {
-		JsonToMap map = new JsonToMap(this.titleArticle);
-		this.titleArticleMap = map.getMap("title", "id");
+		JsonToMap<String, Integer> map = new JsonToMap<String, Integer>(this.titleArticle);
+		this.titleArticleMap = map.getMap("title", "id", "zero", 0);
 	}
 
 	private void namedEntityRecognizer() {
-		this.documentVector = new HashMap<>();
+		this.neMap = new HashMap<>();
 
 		for (String token : this.document.split("\\s+")) {
 			if (this.titleArticleMap.containsKey(token.trim())) {
-				this.documentVector.put(token.trim(), this.titleArticleMap.get(token.trim()).intValue());
+				this.neMap.put(token.trim(), this.titleArticleMap.get(token.trim()).intValue());
 			}
 		}
 	}
 
-	public Map<String, Integer> getDocumentVector() {
-		return this.documentVector;
+	public Map<String, Integer> getNamedEntityMap() {
+		return this.neMap;
 	}
 }

@@ -1,8 +1,8 @@
+//writing by mohammadHoseinAbedi : 26/5/2018, he will come and save humanity(Ayatollah Khamenei).
 package entityLinkingGraph;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 import org.json.JSONException;
@@ -12,44 +12,28 @@ public class App {
 
 	public static void main(String[] args) {
 
-		Map<Integer, String> map = new HashMap<>();
-		BufferedReader reader = new ReaderWriter().getReader("data\\new_dataset\\summaryArticleSmall.json");
-		String line;
-		JSONObject jsonLine;
-		Integer docId = new Integer(0);
-		String document = null;
 		try {
-			int i = 0;
-			while ((line = reader.readLine()) != null) {
-				jsonLine = new JSONObject(line);
-				if (i == 0) {
-					document = jsonLine.getString("summary");
-					docId = new Integer(jsonLine.getInt("id"));
-					i++;
-				}
+			BufferedReader reader = new ReaderWriter().getReader("data\\new_dataset\\summaryArticleSmall.json");
+			String document = new JSONObject(reader.readLine()).getString("summary");
+			Integer docId = new JSONObject(reader.readLine()).getInt("id");
 
-				map.put(jsonLine.getInt("id"), jsonLine.getString("summary"));
-			}
+			// get Map of document-Summary and document-Id
+			Map<Integer, String> summaryMap = new JsonToMap<Integer, String>(
+					"data\\new_dataset\\summaryArticleSmall.json").getMap("id", "summary", 0, "zero");
 
 			Graph graph = new Graph();
 			graph.addVertex(docId);
-			//System.out.println(docId);
 
-			NamedEntityRecognition n = new NamedEntityRecognition(document);
-
-			//System.out.println(n.getDocumentVector().values().toString());
-
-			for (Integer nodes : n.getDocumentVector().values()) {
-				graph.addVertex(nodes);
-				n = new NamedEntityRecognition(map.get(nodes));
-				for (Integer nodes1 : n.getDocumentVector().values()) {
+			// graph creator
+			for (Integer namedEntity : new NamedEntityRecognition(document).getNamedEntityMap().values()) {
+				graph.addVertex(namedEntity);
+				graph.addEdge(docId, namedEntity);
+				for (Integer nodes1 : new NamedEntityRecognition(summaryMap.get(namedEntity)).getNamedEntityMap()
+						.values()) {
 					graph.addVertex(nodes1);
-					graph.addEdge(nodes, nodes1);
+					graph.addEdge(namedEntity, nodes1);
 				}
 			}
-			graph.addEdge(docId, 0);
-
-			//System.out.println(graph.getVertices().toString());
 			graph.printVertices();
 
 		} catch (IOException e) {
