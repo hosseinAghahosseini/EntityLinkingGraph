@@ -1,14 +1,15 @@
 package entityLinkingGraph;
 
-import java.util.LinkedList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Vertex {
 	private Integer documentId;
-	private LinkedList<Vertex> neighbours;
+	private Set<Vertex> neighbors;
 
 	public Vertex(int documentId) {
 		this.documentId = new Integer(documentId);
-		this.neighbours = new LinkedList<>();
+		this.neighbors = new HashSet<>();
 	}
 
 	public int getData() {
@@ -19,20 +20,31 @@ public class Vertex {
 		this.documentId = new Integer(documentId);
 	}
 
-	public LinkedList<Vertex> getNeighbours() {
-		return neighbours;
+	public Set<Vertex> getNeighbours() {
+		return neighbors;
 	}
 
 	public void removeNeighbour(Vertex neighbour) {
-		this.neighbours.remove(neighbour);
+		this.neighbors.remove(neighbour);
 	}
 
 	public void addNeighbour(Vertex neighbour) {
-		this.neighbours.add(neighbour);
+		this.neighbors.add(neighbour);
 	}
 
 	@Override
 	public String toString() {
 		return this.documentId.equals(null) ? "NULL" : this.documentId.toString();
 	}
+
+	@Override
+	public int hashCode() {
+		return this.documentId;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return this.documentId.intValue() == ((Vertex) obj).documentId.intValue();
+	}
+
 }

@@ -1,41 +1,46 @@
 package entityLinkingGraph;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.NoSuchElementException;
-import java.util.Objects;
-
-import one.util.streamex.StreamEx;
+import java.util.Set;
 
 public class Graph {
 
-	private List<Vertex> vertices;
+	private Set<Vertex> vertices;
+
+	public Set<Vertex> getVertices() {
+		return vertices;
+	}
+
 	private int countVertices;
 	private int countEdges;
 
 	public Graph() {
-		this.vertices = new ArrayList<>();
+		this.vertices = new HashSet<Vertex>();
 		this.countVertices = 0;
 		this.countEdges = 0;
 	}
 
 	public void printVertices() {
-		this.vertices.stream().map(Vertex::toString).forEach(System.out::printf);
+		this.vertices.stream().map(Vertex::toString).forEach(result -> System.out.print(result + " "));
 	}
 
-	public void addVertex(int documentId) {
+	public void addVertex(Integer documentId) {
 		this.vertices.add(new Vertex(documentId));
 		this.countVertices++;
+
 	}
 
 	public void removeVertex(int documentIdToRemove) {
 
 		try {
-			this.vertices.set(new Long(
-					StreamEx.of(this.vertices).indexOf(vertex -> documentIdToRemove == vertex.getData()).getAsLong())
-							.intValue(),
-					null);
-			this.vertices.removeIf(Objects::isNull);
+			// this comment for List Neighbor
+			// this.vertices.set(new Long(
+			// StreamEx.of(this.vertices).indexOf(vertex -> documentIdToRemove ==
+			// vertex.getData()).getAsLong())
+			// .intValue(),
+			// null);
+			this.vertices.remove(this.findVertex(documentIdToRemove));
 			this.countVertices--;
 		} catch (NoSuchElementException e) {
 			System.out.println("no such vertex.");

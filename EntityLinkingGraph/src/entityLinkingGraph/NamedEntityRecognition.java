@@ -1,16 +1,11 @@
 package entityLinkingGraph;
 
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class NamedEntityRecognition {
 
-	private String titleArticle = "data\\new_dataset\\titleArticleNEW.json";
+	private String titleArticle = "data\\new_dataset\\titleArticleSmall.json";
 	private Map<String, Integer> titleArticleMap;
 	private Map<String, Integer> documentVector;
 	private String document;
@@ -23,23 +18,8 @@ public class NamedEntityRecognition {
 	}
 
 	private void titleArticleToMap() {
-
-		BufferedReader reader = new ReaderWriter().getReader(this.titleArticle);
-		String line;
-		JSONObject jsonLine;
-		this.titleArticleMap = new HashMap<>();
-
-		try {
-			while ((line = reader.readLine()) != null) {
-				jsonLine = new JSONObject(line);
-				this.titleArticleMap.put(jsonLine.getString("title"), jsonLine.getInt("id"));
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-
+		JsonToMap map = new JsonToMap(this.titleArticle);
+		this.titleArticleMap = map.getMap("title", "id");
 	}
 
 	private void namedEntityRecognizer() {

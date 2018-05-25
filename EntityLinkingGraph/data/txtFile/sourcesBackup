@@ -1,0 +1,95 @@
+package entityLinkingGraph;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class App {
+
+	public static void main(String[] args) {
+
+		BufferedReader reader = new ReaderWriter().getReader("data\\new_dataset\\summaryArticleNEW.json");
+		BufferedWriter writer = new ReaderWriter().getWriter("data\\new_dataset\\summaryArtcileSmall.json");
+
+		BufferedReader reader1 = new ReaderWriter().getReader("data\\new_dataset\\titleArticleNEW.json");
+		BufferedWriter writer1 = new ReaderWriter().getWriter("data\\new_dataset\\titleArticleSmall.json");
+		String document = null;
+		String doc = null;
+		int docId;
+		try {
+			int i = 100000;
+			while ((document = reader.readLine()) != null && (doc = reader.readLine()) != null && i > 0) {
+				writer.append(document).append("\r\n");
+				writer1.append(doc).append("\r\n");
+				i--;
+			}
+
+			writer.flush();
+			writer.close();
+			writer1.flush();
+			writer1.close();
+			reader.close();
+			reader1.close();
+
+			// JSONObject jsonLine = new JSONObject(document);
+			// document = jsonLine.getString("summary");
+			// docId = jsonLine.getInt("id");
+			// Graph graph = new Graph();
+			// NamedEntityRecognition n = new NamedEntityRecognition(document);
+			// graph.addVertex(docId);
+			// for (Integer nodes : n.getDocumentVector().values()) {
+			// graph.addVertex(nodes);
+			// graph.addEdge(docId, nodes);
+			// }
+			// graph.printVertices();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+}
+
+
+
+
+package entityLinkingGraph;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class JsonToMap<K,V> {
+	private String path;
+	private Map<K, V> map;
+
+	public JsonToMap(String path) {
+		this.map = new HashMap<>();
+		this.path = path;
+	}
+
+	public Map<K, V> getMap(String key, String value) {
+		BufferedReader reader = new ReaderWriter().getReader(this.path);
+		String line;
+		JSONObject jsonLine;
+		try {
+			while ((line = reader.readLine()) != null) {
+				jsonLine = new JSONObject(line);
+				this.map.put( (K)jsonLine.get(key), (V)jsonLine.get(value));
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return this.map;
+	}
+
+}
+
