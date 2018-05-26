@@ -2,17 +2,15 @@
 package EntityLinkingGraph;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * @author hosseinAghahosseini
  */
 
 public class EntityLinkigGraph {
-
+    
     public static void main(String[] args) {
-        
+
         System.out.println(LocalDateTime.now());
         
         /*
@@ -42,14 +40,20 @@ public class EntityLinkigGraph {
 
         //ArrayList<String> visitedLinks = new ArrayList<>();
         wikiTitle wt = new wikiTitle();
-        wt.initialize("graphtheory");
+        wt.initialize("marcello_mastroianni");
         //wt.setChildren(false, 1, visitedLinks);
-        wt.setChildren(false, 2, staticAddedLinks.visitedLinks);
+        wt.setChildren(false,1 , staticAddedLinks.visitedLinks);
         
         System.out.println(LocalDateTime.now());
         
-        for (int i = 0 ; i < staticAddedLinks.visitedLinks.size() ; i++)
-            System.out.println(staticAddedLinks.visitedLinks.get(i));
+//        for (int i = 0 ; i < staticAddedLinks.visitedLinks.size() ; i++)
+//            System.out.println(staticAddedLinks.visitedLinks.get(i));
+
+        graphVisualize gv = new graphVisualize();
+        gv.visualizeGraph(wt);
+        gv.colorizeGraph(wt);
+        gv.displayGraph();
+        
     }
     
 }
