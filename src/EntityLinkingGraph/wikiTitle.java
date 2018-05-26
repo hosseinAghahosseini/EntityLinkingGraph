@@ -47,10 +47,7 @@ public class wikiTitle {
          if (threshold >= 0)
          {
             System.out.println("thisLink:"+this.link);
-            if(this.link.equals("https://en.wikipedia.org/wiki/Mexico"))
-            {
-                System.out.println("thisLink:"+this.link);
-            }
+
             visitedLinks.add(this.link);
             
             AtagList al = new AtagList();
