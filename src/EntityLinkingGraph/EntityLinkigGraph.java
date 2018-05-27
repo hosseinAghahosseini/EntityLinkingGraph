@@ -40,11 +40,14 @@ public class EntityLinkigGraph {
 
         //ArrayList<String> visitedLinks = new ArrayList<>();
         wikiTitle wt = new wikiTitle();
-        wt.initialize("marcello_mastroianni");
+        wt.initialize("marcelloMastroianni");
+//        wt.title = "انتگرال";
+//        wt.link = "https://fa.wikipedia.org/wiki/%D8%A7%D9%86%D8%AA%DA%AF%D8%B1%D8%A7%D9%84";
+
         //wt.setChildren(false, 1, visitedLinks);
         wt.setChildren(false,1 , staticAddedLinks.visitedLinks);
         
-        System.out.println(LocalDateTime.now());
+        
         
 //        for (int i = 0 ; i < staticAddedLinks.visitedLinks.size() ; i++)
 //            System.out.println(staticAddedLinks.visitedLinks.get(i));
@@ -52,7 +55,37 @@ public class EntityLinkigGraph {
         graphVisualize gv = new graphVisualize();
         gv.visualizeGraph(wt);
         gv.colorizeGraph(wt);
+        
+        
         gv.displayGraph();
+        
+        gv.topologicalSort();
+        
+        //wt.postOrderVisit(wt,0);
+        
+//        MyGraph gs = new MyGraph();
+//        gs.addVertex("A");
+//    gs.addVertex("B");
+//    gs.addVertex("C");
+//    gs.addVertex("D");
+//    gs.addVertex("E");
+//    gs.addVertex("F");
+//    gs.addVertex("G");
+//    gs.addVertex("H");
+//    gs.addVertex("K");
+//
+//    gs.addEdge("A", "B");
+//    gs.addEdge("A", "D");
+//    gs.addEdge("B", "D");
+//    gs.addEdge("E", "D");
+//    gs.addEdge("B", "C");
+//    gs.addEdge("F", "C");
+//    gs.addEdge("C", "H");
+//    gs.addEdge("G", "H");
+//    gs.addEdge("F", "G");
+//    gs.topologicalSort();
+        
+        System.out.println("\n"+LocalDateTime.now());
         
     }
     

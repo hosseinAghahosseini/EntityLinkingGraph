@@ -5,7 +5,6 @@
  */
 package EntityLinkingGraph;
 
-import java.awt.Color;
 import java.util.Random;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
@@ -34,6 +33,8 @@ public class graphVisualize {
    "}";
     
     Graph g = new SingleGraph("Tutorial 1");
+    //Graph g = new MultiGraph("Tutorial 1");
+    MyGraph gm = new MyGraph();
     
     public void visualizeGraph(wikiTitle awt)
     {
@@ -41,6 +42,7 @@ public class graphVisualize {
         try {
             n = g.addNode(awt.title);
             n.addAttribute("ui.label", awt.title);
+            gm.addVertex(awt.title);
         }
         catch (org.graphstream.graph.IdAlreadyInUseException er)
         {
@@ -55,6 +57,7 @@ public class graphVisualize {
             visualizeGraph(awt.childNodes.get(i));
             try {
                 g.addEdge(awt.title+awt.childNodes.get(i).title, awt.title, awt.childNodes.get(i).title);
+                gm.addEdge(awt.childNodes.get(i).title,awt.title);
             }
             catch (org.graphstream.graph.IdAlreadyInUseException er)
             {
@@ -62,6 +65,7 @@ public class graphVisualize {
                 int  x = rand.nextInt(255);
                 try {
                 g.addEdge(awt.title+awt.childNodes.get(i).title+ Integer.toString(x), awt.title, awt.childNodes.get(i).title);
+                gm.addEdge(awt.childNodes.get(i).title,awt.title);
                 }
                 catch (org.graphstream.graph.EdgeRejectedException ee)
                 {
@@ -91,7 +95,16 @@ public class graphVisualize {
         g.spliterator();
         g.setStrict(false);
         g.setAutoCreate( true );
-        g.display();
+        g.display(); 
     }
+    
+    public void topologicalSort() 
+    {
+        System.out.println("topological Sort :");
+        gm.topologicalSort();
+    }
+    
+    
+        
 
 }

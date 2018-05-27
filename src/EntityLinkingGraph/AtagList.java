@@ -28,6 +28,7 @@ public class AtagList {
         if(includeContent == false)
         {
             referencesIndex = referencesRemoved.indexOf("<h2>Contents</h2>");
+            //referencesIndex = referencesRemoved.indexOf("<h2>محتویات</h2>");
             //System.out.println("before:"+referencesRemoved);
             //System.out.println(referencesIndex);
             try{

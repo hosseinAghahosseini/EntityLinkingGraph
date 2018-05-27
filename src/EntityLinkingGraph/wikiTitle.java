@@ -19,6 +19,7 @@ public class wikiTitle {
      public ArrayList<wikiTitle> childNodes = new ArrayList<>();
      String title = "";
      String link = "";
+     Boolean visited = false;
      
      public void initialize(String title_)
      {
@@ -61,6 +62,7 @@ public class wikiTitle {
             try {
                 for (int i = 0 ; i < al.links.size() ; i++)
                 {
+                    //String childLink = "https://fa.wikipedia.org"+al.links.get(i).attr("href");                    
                     String childLink = "https://en.wikipedia.org"+al.links.get(i).attr("href");
                     System.out.println(threshold + ":parent:" + this.title + " - childLink:" +  childLink );
 
@@ -86,15 +88,34 @@ public class wikiTitle {
          }
      }
      
-     public Boolean isInVisitedLinks(String link , ArrayList<String> visitedLinks)
-     {
-         for (int i = 0 ; i < visitedLinks.size() ; i++)
-         {
-             if (link.equals(visitedLinks.get(i)))
-                 return true;
-         }
-         return false;
-     }
+    public Boolean isInVisitedLinks(String link , ArrayList<String> visitedLinks)
+    {
+        for (int i = 0 ; i < visitedLinks.size() ; i++)
+        {
+            if (link.equals(visitedLinks.get(i)))
+                return true;
+        }
+        return false;
+    }
      
+    public void postOrderVisit(wikiTitle wt , int level)
+    {
+        for (int i = 0 ; i < wt.childNodes.size() ; i++)
+        {
+            postOrderVisit(wt.childNodes.get(i),level+1);
+            //System.out.print(level + ":" + wt.childNodes.get(i).title + " - ");
+        }
+        for (int i = 0 ; i < wt.childNodes.size() ; i++)
+        {
+            if (wt.childNodes.get(i).visited == false)
+            {
+                System.out.print(level + ":" + wt.childNodes.get(i).title + " - ");
+                wt.childNodes.get(i).visited = true;
+            }
+            
+        }
+        if (level == 0)
+            System.out.print(level + ":" + wt.title);
+    }
     
 }
