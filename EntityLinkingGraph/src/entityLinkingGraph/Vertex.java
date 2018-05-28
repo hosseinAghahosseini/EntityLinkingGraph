@@ -6,10 +6,12 @@ import java.util.Set;
 public class Vertex {
 	private Integer documentId;
 	private Set<Vertex> neighbors;
+	private boolean isVisit;
 
 	public Vertex(int documentId) {
 		this.documentId = new Integer(documentId);
 		this.neighbors = new HashSet<>();
+		this.isVisit = false;
 	}
 
 	public int getData() {
@@ -30,6 +32,14 @@ public class Vertex {
 
 	public void addNeighbour(Vertex neighbour) {
 		this.neighbors.add(neighbour);
+	}
+
+	public boolean isVisit() {
+		return isVisit;
+	}
+
+	public void setVisit(boolean isVisit) {
+		this.isVisit = isVisit;
 	}
 
 	@Override

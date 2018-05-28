@@ -93,7 +93,34 @@ public class JsonToMap<K,V> {
 
 }
 
+--------------------------------------------------------
+//			for (Vertex v : myGraph.getVertices()) {
+//				for (Vertex vv : v.getNeighbours()) {
+//					graph.addEdge(v.toString() + vv.toString(), v.toString(), vv.toString());
+//				}
+//			}
 
+//			while (!nodeStack.isEmpty() && layers < 50) {
+//				Integer actualVertex = nodeStack.pop();
+//				myGraph.addVertex(actualVertex);
+//				for (Integer namedEntity : new NamedEntityRecognition(summaryMap.get(actualVertex)).getNamedEntityMap()
+//						.values()) {
+//					expandedList.add(actualVertex);
+//					if (!expandedList.contains(namedEntity))
+//						nodeStack.push(namedEntity);
+//					myGraph.addVertex(namedEntity);
+//					myGraph.addEdge(actualVertex, namedEntity);
+//				}
+//				System.out.println("Layer number " + layers + "is bieng processed.");
+//				layers++;
+//			}
+
+
+
+			// building myGraph 
+//			MyGraph myGraph = new MyGraph();
+//			myGraph.addVertex(docId);
+			
 
 
 
@@ -211,3 +238,25 @@ public class App {
 
 	}
 }
+
+
+
+
+
+
+
+
+--------------------------------------------------------------
+			// graph creator
+			// for (Integer namedEntity : new
+			// NamedEntityRecognition(document).getNamedEntityMap().values()) {
+			// graph.addVertex(namedEntity);
+			// graph.addEdge(docId, namedEntity);
+			// for (Integer nodes1 : new
+			// NamedEntityRecognition(summaryMap.get(namedEntity)).getNamedEntityMap()
+			// .values()) {
+			// graph.addVertex(nodes1);
+			// graph.addEdge(namedEntity, nodes1);
+			// }
+			// }
+			// String document = new JSONObject(reader.readLine()).getString("summary");

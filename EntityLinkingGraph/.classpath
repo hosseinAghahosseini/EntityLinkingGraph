@@ -4,5 +4,14 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="C:/Users/AMiR/Downloads/org.json.jar"/>
 	<classpathentry kind="lib" path="C:/Users/AMiR/Downloads/streamex-0.6.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/AMiR/git/EntityLinkingGraph/EntityLinkingGraph/jar/gs-algo-1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/AMiR/git/EntityLinkingGraph/EntityLinkingGraph/jar/gs-algo-1.3-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/AMiR/git/EntityLinkingGraph/EntityLinkingGraph/jar/gs-algo-1.3-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/AMiR/git/EntityLinkingGraph/EntityLinkingGraph/jar/gs-core-1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/AMiR/git/EntityLinkingGraph/EntityLinkingGraph/jar/gs-core-1.3-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/AMiR/git/EntityLinkingGraph/EntityLinkingGraph/jar/gs-core-1.3-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/AMiR/git/EntityLinkingGraph/EntityLinkingGraph/jar/gs-ui-1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/AMiR/git/EntityLinkingGraph/EntityLinkingGraph/jar/gs-ui-1.3-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/AMiR/git/EntityLinkingGraph/EntityLinkingGraph/jar/gs-ui-1.3-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
