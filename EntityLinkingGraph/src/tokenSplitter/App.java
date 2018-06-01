@@ -7,6 +7,8 @@ public class App {
 
 		@SuppressWarnings("unused")
 		MaxLengthAlgorithm solveEN = new MaxLengthAlgorithm();
+		
+		
 	}
 
 }
