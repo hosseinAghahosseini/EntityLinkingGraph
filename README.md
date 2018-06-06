@@ -8,8 +8,8 @@ EntityLinkingGraph will process a Wikipedia title and find Wikipedia pages that 
 Also it uses topological sort on the graph in order to make a list which shows what wiki pages you should read first, in order to fully understand a wiki title.
 
 Our Application uses two methods: Online and Offline.
-In Offline mode, we use a dataset that contains Wikipedia page name entities and we build the dependency graph based on that dataset.
-In Online mode, we dynamically read through a wiki page, find its Links to other wiki pages and build the graph on these links.
+In Offline mode, we use a dataset that contains Wikipedia-page-based name entities and we build the dependency graph based on that dataset.
+In Online mode, we dynamically read through a wiki page, find its Links to other wiki pages and build the graph based on these links.
 
 The root page of project is the directory of the online method project and /EntityLiningGraph page is the offline methods directory.
 
