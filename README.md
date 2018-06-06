@@ -2,6 +2,7 @@
 Imagine a case that you want to know about something, what would you do? A typical solution would be looking for its Wikipedia page.
 But what if that page is related to many other pages and you should know about them first to achieve your desired outcome.
 Or maybe you want to know that what subjects are dependent to a specified subject and maybe you want to display this dependency in something like Graph for example.
+
 In these cases, EntityLinkingGraph may help you.
 EntityLinkingGraph will process a Wikipedia title and find Wikipedia pages that are related to that title in a recursive way, and for ease of reading, it shows these pages in a Graph. 
 Also it uses topological sort on the graph in order to make a list which shows what wiki pages you should read first, in order to fully understand a wiki title.
