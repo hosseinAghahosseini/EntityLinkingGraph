@@ -11,9 +11,9 @@ Our Application uses two methods: Online and Offline.
 In Offline mode, we use a dataset that contains Wikipedia-page-based name entities and we build the dependency graph based on that dataset.
 In Online mode, we dynamically read through a wiki page, find its Links to other wiki pages and build the graph based on these links.
 
-The root page of project is the directory of the online method project and /EntityLiningGraph page is the offline methods directory.
+The root page of the project is the directory of the online method project and /EntityLinkingGraph page is the offline methods directory.
 
-Note that if you import project to NetBeans, Online mode would be the main and if you import it to eclipse, offline mode would be so!
+Note that if you import the project to NetBeans, Online mode would be the main and if you import it to eclipse, offline mode would be so!
 
-For Example this image shows the dependency Graph of the wiki Page of actor Shahab Hosseini which is made by EntityLinkingGraph:
+This image shows the dependency Graph of the Wikipedia Page of actor Shahab Hosseini which is made by EntityLinkingGraph:
 http://s9.picofile.com/file/8328495368/shahabHosseiniGraph.jpg
